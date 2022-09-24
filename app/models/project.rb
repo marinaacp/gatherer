@@ -1,7 +1,7 @@
-class Project < ApplicationRecord
+class Project
   attr_accessor :tasks
 
-  def new
+  def initialize
     @tasks = []
   end
 
