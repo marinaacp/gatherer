@@ -6,6 +6,6 @@ class Project < ApplicationRecord
   end
 
   def done?
-    true
+    tasks.empty?
   end
 end
