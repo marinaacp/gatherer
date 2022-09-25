@@ -6,6 +6,7 @@ class Project
   end
 
   def done?
-    tasks.empty?
+    # tasks.empty?
+    tasks.all?(&:complete?) # não entendi como primeiro teste passou
   end
 end
