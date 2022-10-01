@@ -5,9 +5,12 @@ class Project
     @tasks = []
   end
 
+  def incomplete_tasks
+    tasks.reject(&:complete?) # refactoring - Rejeita tudo q for true
+  end
+
   def done?
-    # tasks.empty?
-    tasks.all?(&:complete?) # não entendi como primeiro teste passou
+    incomplete_tasks.empty?
   end
 
   def total_size
@@ -15,6 +18,6 @@ class Project
   end
 
   def remaining_size
-    tasks.reject(&:complete?).sum(&:size)
+    incomplete_tasks.sum(&:size)
   end
 end
