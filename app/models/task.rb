@@ -15,11 +15,12 @@ class Task
   end
 
   def part_of_velocity?
-    return false unless complete?
-    completed_at > 21.days.ago
+    return false unless complete? # executa o codigo se a condicional for falsa
+    completed_at > 21.days.ago # não enetndi. para pegar só as tarefas completas com menos de 21 dias desde completas -
+                                # (3) do knows its velocity n seria o simbolo oposto <?
   end
 
   def points_toward_velocity
-    part_of_velocity? ? size : 0
+    part_of_velocity? ? size : 0 # if parte_of_velocity do size else 0
   end
 end
