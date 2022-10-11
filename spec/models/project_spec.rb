@@ -18,7 +18,15 @@ RSpec.describe Project do
     project.tasks << task
     task.mark_completed
     expect(project).to be_done
-    end
+  end
+
+  # o codigo de baixo só da certo nesse bloco, se n ele pega um projeto já feito (no começo do estimates) e tente rodar e vai achar uma velocidade de 3
+  it "properly handles a blank project" do # atenção p casos especiais, como se o projeto n tiver nenhuma task.
+    expect(project.completed_velocity).to eq(0)
+    expect(project.current_rate).to eq(0)
+    expect(project.projected_days_remaining).to be_nan # number is not a number. when a number is divided by zero
+    expect(project).not_to be_on_schedule
+  end
 end
 
 RSpec.describe "estimates" do
@@ -53,7 +61,7 @@ RSpec.describe "estimates" do
   end
 
   it "knows if it is not on schedule" do
-    project.due_date = 1.week.from_now 
+    project.due_date = 1.week.from_now
     expect(project).not_to be_on_schedule
   end
 
@@ -61,4 +69,6 @@ RSpec.describe "estimates" do
     project.due_date = 6.months.from_now
     expect(project).to be_on_schedule
   end
+
+
 end

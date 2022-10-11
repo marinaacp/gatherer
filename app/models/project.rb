@@ -34,6 +34,7 @@ class Project
   end
 
   def on_schedule?
+    return false if projected_days_remaining.nan? # para o caso de n ter task n criar uma exceção
     (Time.zone.today + projected_days_remaining) <= due_date
   end
 end
