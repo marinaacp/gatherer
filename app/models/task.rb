@@ -16,7 +16,8 @@ class Task
 
   def part_of_velocity?
     return false unless complete? # executa o codigo se a condicional for falsa
-    completed_at > 21.days.ago # não enetndi. para pegar só as tarefas completas com menos de 21 dias desde completas -
+    completed_at > Project.velocity_length_in_days.days.ago
+                                # não enetndi. para pegar só as tarefas completas com menos de 21 dias desde completas -
                                 # (3) do knows its velocity n seria o simbolo oposto <?
   end
 

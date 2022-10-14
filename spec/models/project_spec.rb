@@ -24,7 +24,7 @@ RSpec.describe Project do
   it "properly handles a blank project" do # atenção p casos especiais, como se o projeto n tiver nenhuma task.
     expect(project.completed_velocity).to eq(0)
     expect(project.current_rate).to eq(0)
-    expect(project.projected_days_remaining).to be_nan # number is not a number. when a number is divided by zero
+    expect(project.projected_days_remaining).to be_nan # nan is true if is not a number. when a number is divided by zero is not a number
     expect(project).not_to be_on_schedule
   end
 end
