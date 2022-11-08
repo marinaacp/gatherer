@@ -1,7 +1,7 @@
 class CreatesProject
   attr_acessor :name, :project
 
-  def initialize(name: "")
+  def initialize(name: "") # arguments to make sure the arguments passed to the CreatesProject initializer are limited to the ones you want.
     @name = name
   end
 
@@ -9,4 +9,3 @@ class CreatesProject
     self.project = Project.new(name: name)
   end
 end
-
